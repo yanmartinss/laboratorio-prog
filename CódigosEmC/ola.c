@@ -11,4 +11,7 @@ int main(){
     res = x + y;
 
     printf("O resultado de %d + %d eh igual a %d", x, y, res);
+    printf("Tchau!");
+
+    return 0;
 }
