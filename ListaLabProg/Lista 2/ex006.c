@@ -50,9 +50,9 @@ int main(){
     printf("\n");
 
     if (paulo > renata){
-        printf("O candidato que venceu foi Paulo com mais votos que Renata\n", ((float)paulo / total) * 100);
+        printf("O candidato que venceu foi Paulo com mais votos que Renata.\n", ((float)paulo / total) * 100);
     }else if (renata > paulo) {
-        printf("A candidata que venceu foi Renata com mais votos que Paulo\n", ((float)renata / total) * 100);
+        printf("A candidata que venceu foi Renata com mais votos que Paulo.\n", ((float)renata / total) * 100);
     } else{
         printf("O resultado da votação foi empate\n");
     }
