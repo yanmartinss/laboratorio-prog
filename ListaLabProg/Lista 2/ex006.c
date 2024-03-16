@@ -28,7 +28,7 @@ int main(){
             paulo += 1;
         } else if (voto == 7){
             renata += 1;
-        } else if (voto >0 && voto != 5 && voto !=7){
+        } else if (voto > 0 && voto != 5 && voto !=7){
             nulo += 1;
         }else {
             printf("--------------------------------\n");
