@@ -4,11 +4,11 @@ int main() {
     int num;
     float fat = 1;
 
-    printf("Digite um numero inteiro e positivo: ");
+    printf("Digite um número inteiro e positivo: ");
     scanf("%d", &num);
 
     if (num < 0) {
-        printf("Numero negativo inserido. Por favor, insira um numero positivo.\n");
+        printf("Numero negativo inserido. Por favor, insira um número positivo.\n");
         return 1; 
     }
 

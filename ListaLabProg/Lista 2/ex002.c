@@ -4,7 +4,7 @@ int main() {
     int dia;
 
     do {
-        printf("Digite um numero de 1 a 7 para representar um dia da semana (ou 0 para sair): ");
+        printf("Digite um número de 1 a 7 para representar um dia da semana (ou 0 para sair): ");
         scanf("%d", &dia);
 
         if (dia == 0) {
@@ -20,7 +20,7 @@ int main() {
                 printf("Segunda-feira\n");
                 break;
             case 3:
-                printf("Terca-feira\n");
+                printf("Terça-feira\n");
                 break;
             case 4:
                 printf("Quarta-feira\n");
@@ -32,10 +32,10 @@ int main() {
                 printf("Sexta-feira\n");
                 break;
             case 7:
-                printf("Sabado\n");
+                printf("Sábado\n");
                 break;
             default:
-                printf("Numero de dia nao valido.\n");
+                printf("Número de dia não válido.\n");
                 break;
         }
     } while (dia != 0);
