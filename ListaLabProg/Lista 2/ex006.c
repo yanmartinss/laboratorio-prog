@@ -20,25 +20,29 @@ int main(){
         scanf("%d", &voto);
 
         if (voto >= 0){
+            switch(voto) {
+                case 0:
+                    branco += 1;
+                    break;
+                case 5:
+                    paulo += 1;
+                    break;
+                case 7:
+                    renata += 1;
+                    break;
+                default:
+                    nulo += 1;
+                    break;
+            }
             total += 1;
-        }
-        if (voto == 0){
-            branco += 1;
-        } else if (voto == 5){
-            paulo += 1;
-        } else if (voto == 7){
-            renata += 1;
-        } else if (voto > 0 && voto != 5 && voto !=7){
-            nulo += 1;
-        }else {
+        } else {
             printf("--------------------------------\n");
             printf("Votação encerrada!\n");
             break;
         }
 
-    sleep(0.8);
-    system("cls");
-
+        sleep(0.8);
+        system("cls");
     }
 
     printf("RESULTADO DA VOTAÇÃO\n");
@@ -50,10 +54,10 @@ int main(){
     printf("\n");
 
     if (paulo > renata){
-        printf("O candidato que venceu foi Paulo com mais votos que Renata.\n", ((float)paulo / total) * 100);
-    }else if (renata > paulo) {
-        printf("A candidata que venceu foi Renata com mais votos que Paulo.\n", ((float)renata / total) * 100);
-    } else{
+        printf("O candidato que venceu foi Paulo com mais votos que Renata.\n");
+    } else if (renata > paulo) {
+        printf("A candidata que venceu foi Renata com mais votos que Paulo.\n");
+    } else {
         printf("O resultado da votação foi empate\n");
     }
 
