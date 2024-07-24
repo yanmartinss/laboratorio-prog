@@ -18,7 +18,7 @@ int main() {
         }
         printf("\nValores e endereços do vetor de inteiros:\n");
         for (int i = 0; i < size; i++) {
-            printf("Valor: %d, Endereço: %p\n", array[i], (void*)&array[i]);
+            printf("Valor: %d, Endereço: %p\n", array[i], &array[i]);
         }
     } else if (type == 'f') {
         float array[size];
@@ -28,7 +28,7 @@ int main() {
         }
         puts("\nValores e endereços do vetor de floats:\n");
         for (int i = 0; i < size; i++) {
-            printf("Valor: %.2f, Endereço: %p\n", array[i], (void*)&array[i]);
+            printf("Valor: %.2f, Endereço: %p\n", array[i], &array[i]);
         }
     } else if (type == 'c') {
         char array[size];
@@ -38,7 +38,7 @@ int main() {
         }
         puts("\nValores e endereços do vetor de chars:\n");
         for (int i = 0; i < size; i++) {
-            printf("Valor: %c, Endereço: %p\n", array[i], (void*)&array[i]);
+            printf("Valor: %c, Endereço: %p\n", array[i], &array[i]);
         }
     } else {
         puts("Tipo inválido!\n");

@@ -1,26 +1,24 @@
 #include <stdio.h>
 
 int main() {
-    int num1, num2;
-    int *ptr1, *ptr2;
+    int x, y;
+    int *pX = NULL, *pY = NULL;
 
-    printf("Digite o primeiro número: ");
-    scanf("%d", &num1);
-    printf("Digite o segundo número: ");
-    scanf("%d", &num2);
+    puts("Digite um número para X: ");
+    scanf("%d", &x);
+    puts("Digite um número para Y: ");
+    scanf("%d", &y);
 
-    ptr1 = &num1;
-    ptr2 = &num2;
+    pX = &x;
+    pY = &y;
 
-    printf("Antes da troca:\n");
-    printf("num1 = %d, num2 = %d\n", *ptr1, *ptr2);
+    printf("Antes da troca, X: %d, Y: %d\n", *pX, *pY);
 
-    int temp = *ptr1;
-    *ptr1 = *ptr2;
-    *ptr2 = temp;
+    int temp = *pX;
+    *pX = *pY;
+    *pY = temp;
 
-    printf("Depois da troca:\n");
-    printf("num1 = %d, num2 = %d\n", *ptr1, *ptr2);
+    printf("Depois da troca, X: %d, Y: %d", *pX, *pY);
 
     return 0;
 }

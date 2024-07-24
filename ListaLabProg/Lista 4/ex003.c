@@ -1,31 +1,27 @@
 #include <stdio.h>
-#include <limits.h>
 
 int main() {
-    int num, menor;
+    int num, menor, cont = 1;
     int *ptr_num = &num;
     int *ptr_menor = &menor;
 
-    *ptr_menor = INT_MAX;
-
-    puts("Digite números (digite um número negativo para finalizar):\n");
-
     while (1) {
-        puts("Digite um número: ");
+        puts("Digite um número (NEGATIVO PARA ENCERRAR O PROGRAMA): ");
         scanf("%d", ptr_num);
 
         if (*ptr_num < 0) {
             break;
         }
 
-        if (*ptr_num < *ptr_menor) {
+        if (cont) {
+            *ptr_menor = *ptr_num;
+            cont = 0;
+        } else if (*ptr_num < *ptr_menor) {
             *ptr_menor = *ptr_num;
         }
 
         printf("O menor valor fornecido até agora é: %d\n", *ptr_menor);
     }
-
-    puts("Programa finalizado.\n");
 
     return 0;
 }
