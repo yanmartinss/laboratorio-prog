@@ -4,27 +4,25 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
+
+#define size 5
 
 int main() {
-    int var = 15;
-    int *ptr_var = &var;
+    float vetor[size];
+    float *ptr_vetor = vetor;
 
-    printf("Conteudo de var: %d\n", var);
-    printf("Endereco de var: %p\n", &var);
+    puts("Digite os valores para o vetor: ");
 
-    printf("Conteudo apontado por ptr_var: %d\n", *ptr_var);
-    printf("Endereco apontador por ptr_var: %p\n", ptr_var);
-    printf("Endereco do ptr_var: %p", &ptr_var);
+    for(int i = 0; i < size; i++) {
+        scanf("%f", ptr_vetor + i);
+    }
 
-    *ptr_var = 73; 
+    puts("Endereco da posicao de cada valor do vetor: \n");
+    for (int i = 0; i < size; i++) {
+        printf("%p\n", ptr_vetor + i);
+    }
 
-    puts("\n\n");
-    printf("Conteudo de var: %d\n", var);
-    printf("Endereco de var: %p\n", &var);
-    printf("Conteudo apontado por ptr_var: %d\n", *ptr_var);
-    printf("Endereco apontador por ptr_var: %p\n", ptr_var);
-    printf("Endereco do ptr_var: %p\n", &ptr_var);
-
-    puts("\nEnd");
     return 0;
 }
