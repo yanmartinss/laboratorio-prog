@@ -1,29 +1,53 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-#define size 100
+#define maxSize 100
+
+char* buscarCaractere(const char *str, char caractere) {
+    while (*str != '\0') {  
+        if (*str == caractere) { 
+            return (char*)str; 
+        }
+        str++;   
+    }
+    return NULL; 
+}
 
 int main() {
-    char str[size], ch;
-    char *ptrStr = str;
+    char *str = NULL;
+    size_t tamanho_max = maxSize;  
 
-    puts("Digite uma string: ");
-    fgets(str, sizeof(str), stdin);
-
-    puts("Digite o caractere que deseja buscar: ");
-    scanf("%c", &ch);
-
-    int found = 0;
-
-    while (*ptrStr != '\0') {
-        if (*ptrStr == ch) {
-            found = 1;
-            break;
-        }
-        ptrStr++;
+    str = (char*)malloc(tamanho_max * sizeof(char));
+    if (str == NULL) {
+        printf("Erro de alocação de memória!\n");
+        return 1;
     }
 
-    printf(found ? "Caractere '%c' encontrado na posicao %ld da string.\n" : "Caractere '%c' nao encontrado na string.\n", ch, found ? ptrStr - str : 0);
+    printf("Digite uma string: ");
+    fgets(str, tamanho_max, stdin);
+
+    char *ptr = str;
+    while (*ptr != '\0') {
+        if (*ptr == '\n') {
+            *ptr = '\0';
+            break;
+        }
+        ptr++;
+    }
+
+    char caractere;
+    printf("Digite o caractere a ser buscado: ");
+    scanf(" %c", &caractere); 
+
+    char *resultado = buscarCaractere(str, caractere);
+
+    if (resultado != NULL) {
+        printf("Caractere '%c' encontrado na posição: %ld\n", caractere, resultado - str);
+    } else {
+        printf("Caractere '%c' não encontrado na string.\n", caractere);
+    }
+
+    free(str);
 
     return 0;
 }
