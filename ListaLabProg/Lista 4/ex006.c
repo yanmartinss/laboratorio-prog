@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define maxSize 100
+
 void copiarString(const char *origem, char *destino) {
     while (*origem != '\0') {  
         *destino = *origem; 
@@ -13,7 +15,7 @@ void copiarString(const char *origem, char *destino) {
 
 int main() {
     char *origem = NULL, *destino = NULL;
-    size_t tamanho_max = 100;  
+    size_t tamanho_max = maxSize;  
 
     origem = (char*)malloc(tamanho_max * sizeof(char));
     if (origem == NULL) {
