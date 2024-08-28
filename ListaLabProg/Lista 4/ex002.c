@@ -1,24 +1,26 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+void trocar(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
 
 int main() {
-    int x, y;
-    int *pX = NULL, *pY = NULL;
+    int num1, num2;
+    int *ptr_num1 = &num1, *ptr_num2 = &num2;
 
-    puts("Digite um número para X: ");
-    scanf("%d", &x);
-    puts("Digite um número para Y: ");
-    scanf("%d", &y);
+    puts("Digite o primeiro número: ");
+    scanf("%d", ptr_num1);
+    puts("Digite o segundo número: ");
+    scanf("%d", ptr_num2);
 
-    pX = &x;
-    pY = &y;
+    printf("Antes da troca: num1 = %d, num2 = %d\n", *ptr_num1, *ptr_num2);
 
-    printf("Antes da troca, X: %d, Y: %d\n", *pX, *pY);
+    trocar(ptr_num1, ptr_num2);
 
-    int temp = *pX;
-    *pX = *pY;
-    *pY = temp;
-
-    printf("Depois da troca, X: %d, Y: %d", *pX, *pY);
+    printf("Depois da troca: num1 = %d, num2 = %d\n", *ptr_num1, *ptr_num2);
 
     return 0;
 }
