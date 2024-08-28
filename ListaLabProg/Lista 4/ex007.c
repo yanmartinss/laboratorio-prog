@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define maxSize 100
+
 char* concatenarStrings(const char *str1, const char *str2) {
     size_t tamanho_total = strlen(str1) + strlen(str2) + 1;
 
@@ -29,7 +31,7 @@ char* concatenarStrings(const char *str1, const char *str2) {
 
 int main() {
     char *str1 = NULL, *str2 = NULL;
-    size_t tamanho_max = 100;
+    size_t tamanho_max = maxSize;
 
     str1 = (char*)malloc(tamanho_max * sizeof(char));
     if (str1 == NULL) {
