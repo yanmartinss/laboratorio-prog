@@ -1,30 +1,53 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define maxSize 100
+
+void copiarString(const char *origem, char *destino) {
+    while (*origem != '\0') {  
+        *destino = *origem; 
+        origem++;        
+        destino++;     
+    }
+    *destino = '\0';        
+}
 
 int main() {
-    char source[100], destination[100];
-    char *ptrSource = source;
-    char *ptrDestination = destination;
+    char *origem = NULL, *destino = NULL;
+    size_t tamanho_max = maxSize;  
 
-    puts("Digite a string de origem: ");
-    fgets(source, sizeof(source), stdin);
+    origem = (char*)malloc(tamanho_max * sizeof(char));
+    if (origem == NULL) {
+        puts("Erro de alocação de memória para origem!\n");
+        return 1;
+    }
 
-    while (*ptrSource != '\0') {
-        if (*ptrSource == '\n') {
-            *ptrSource = '\0';
+    destino = (char*)malloc(tamanho_max * sizeof(char));
+    if (destino == NULL) {
+        puts("Erro de alocação de memória para destino!\n");
+        free(origem);
+        return 1;
+    }
+
+    puts("Digite uma string: ");
+    fgets(origem, tamanho_max, stdin);
+
+    size_t tamanho = 0;
+    while (origem[tamanho] != '\0') {
+        if (origem[tamanho] == '\n') {
+            origem[tamanho] = '\0';
+            break;
         }
-        ptrSource++;
+        tamanho++;
     }
 
-    ptrSource = source;
+    copiarString(origem, destino);
 
-    while (*ptrSource != '\0') {
-        *ptrDestination = *ptrSource;
-        ptrSource++;
-        ptrDestination++;
-    }
-    *ptrDestination = '\0';
+    printf("String copiada: %s\n", destino);
 
-    printf("A string copiada é: %s\n", destination);
+    free(origem);
+    free(destino);
 
     return 0;
 }

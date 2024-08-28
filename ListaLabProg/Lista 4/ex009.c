@@ -1,33 +1,64 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+void trocar(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void bubbleSort(int *array, size_t tamanho) {
+    bool trocou;
+    int *ptr1, *ptr2;
+
+    do {
+        trocou = false;
+        ptr1 = array;
+        ptr2 = array + 1;
+
+        for (size_t i = 1; i < tamanho; i++) {
+            if (*ptr1 > *ptr2) {
+                trocar(ptr1, ptr2);
+                trocou = true;
+            }
+            ptr1++;
+            ptr2++;
+        }
+        tamanho--; 
+    } while (trocou);
+}
 
 int main() {
-    int n;
+    size_t tamanho;
 
-    puts("Digite o numero de elementos: ");
-    scanf("%d", &n);
+    printf("Digite o número de elementos: ");
+    scanf("%zu", &tamanho);
 
-    int arr[n];
-
-    puts("Digite os elementos do array:\n");
-    for (int i = 0; i < n; i++) {
-        scanf("%d", &arr[i]);
+    int *array = (int*)malloc(tamanho * sizeof(int));
+    if (array == NULL) {
+        printf("Erro de alocação de memória!\n");
+        return 1;
     }
 
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (*(arr + j) > *(arr + j + 1)) {
-                int temp = *(arr + j);
-                *(arr + j) = *(arr + j + 1);
-                *(arr + j + 1) = temp;
-            }
-        }
+    printf("Digite os elementos:\n");
+    int *ptr = array;
+    for (size_t i = 0; i < tamanho; i++) {
+        scanf("%d", ptr);
+        ptr++;
     }
 
-    puts("Array ordenado:\n");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", *(arr + i));
+    bubbleSort(array, tamanho);
+
+    printf("Elementos ordenados:\n");
+    ptr = array;
+    for (size_t i = 0; i < tamanho; i++) {
+        printf("%d ", *ptr);
+        ptr++;
     }
-    puts("\n");
+    printf("\n");
+
+    free(array);
 
     return 0;
 }

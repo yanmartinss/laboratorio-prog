@@ -1,21 +1,22 @@
 #include <stdio.h>
 
+void somar(int *a, int *b, int *resultado) {
+    *resultado = *a + *b;
+}
+
 int main() {
-    int x, y, soma;
-    int *pX = NULL, *pY = NULL, *pSoma = NULL;
+    int num1, num2, soma;
+    int *ptr_num1 = &num1, *ptr_num2 = &num2, *ptr_soma = &soma; 
 
-    puts("Digite um número para X: ");
-    scanf("%d", &x);
-    puts("Digite um número para Y: ");
-    scanf("%d", &y);
-    soma = x + y;
+    puts("Digite o primeiro número: ");
+    scanf("%d", ptr_num1);
+    puts("Digite o segundo número: ");
+    scanf("%d", ptr_num2);
 
-    pX = &x;
-    pY = &y;
-    pSoma = &soma;
+    somar(ptr_num1, ptr_num2, ptr_soma);
 
-    printf("Valor da soma dos dois números: %d\n", *pSoma);
-    printf("Endereço onde a soma está armazenada: %p\n", pSoma);
+    printf("A soma é: %d\n", *ptr_soma);
+    printf("O endereço de memória onde o resultado está armazenado é: [%p]\n", (void*)ptr_soma);
 
     return 0;
 }
