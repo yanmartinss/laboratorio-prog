@@ -2,38 +2,81 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define size 100
-#define finalSize 200
+char* concatenarStrings(const char *str1, const char *str2) {
+    size_t tamanho_total = strlen(str1) + strlen(str2) + 1;
+
+    char *resultado = (char*)malloc(tamanho_total * sizeof(char));
+
+    if (resultado == NULL) { 
+        puts("Erro de alocação de memória!\n");
+        return NULL;
+    }
+
+    char *ptr = resultado;
+
+    while (*str1 != '\0') {
+        *ptr++ = *str1++;
+    }
+
+    while (*str2 != '\0') {
+        *ptr++ = *str2++;
+    }
+
+    *ptr = '\0';
+
+    return resultado;
+}
 
 int main() {
-    char str1[size], str2[size], strResultado[finalSize];
-    char *ptrStr1 = str1;
-    char *ptrStr2 = str2;
-    char *ptrResultado = strResultado;
+    char *str1 = NULL, *str2 = NULL;
+    size_t tamanho_max = 100;
+
+    str1 = (char*)malloc(tamanho_max * sizeof(char));
+    if (str1 == NULL) {
+        puts("Erro de alocação de memória para str1!\n");
+        return 1;
+    }
+
+    str2 = (char*)malloc(tamanho_max * sizeof(char));
+    if (str2 == NULL) {
+        puts("Erro de alocação de memória para str2!\n");
+        free(str1);
+        return 1;
+    }
 
     puts("Digite a primeira string: ");
-    fgets(str1, sizeof(str1), stdin);
-    str1[strcspn(str1, "\n")] = 0;
+    fgets(str1, tamanho_max, stdin);
+
+    char *ptr = str1;
+    while (*ptr != '\0') {
+        if (*ptr == '\n') {
+            *ptr = '\0';
+            break;
+        }
+        ptr++;
+    }
 
     puts("Digite a segunda string: ");
-    fgets(str2, sizeof(str2), stdin);
-    str2[strcspn(str2, "\n")] = 0;
+    fgets(str2, tamanho_max, stdin);
 
-    while (*ptrStr1 != '\0') {
-        *ptrResultado = *ptrStr1;
-        ptrResultado++;
-        ptrStr1++;
+    ptr = str2;
+    while (*ptr != '\0') {
+        if (*ptr == '\n') {
+            *ptr = '\0';
+            break;
+        }
+        ptr++;
     }
 
-    while (*ptrStr2 != '\0') {
-        *ptrResultado = *ptrStr2;
-        ptrResultado++;
-        ptrStr2++;
+    char *resultado = concatenarStrings(str1, str2);
+    if (resultado != NULL) {
+        printf("String concatenada: %s\n", resultado);
+
+        free(resultado);
     }
 
-    *ptrResultado = '\0';
-
-    printf("String resultante: %s\n", strResultado);
+    free(str1);
+    free(str2);
 
     return 0;
 }
