@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main() {
+int main(void) {
+    float calcularAreaRetang(float x, float y);
+    float x = 10, y = 20;
 
-    void imprimaMensagem(void);
-
-    imprimaMensagem();
+    printf("%.1f", calcularAreaRetang(x, y));
 
     return 0;
 }
 
-void imprimaMensagem(void) {
-    printf("teste");
+float calcularAreaRetang(float base, float altura) {
+    return base * altura;
 }
